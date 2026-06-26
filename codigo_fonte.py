@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+
 """
 ============================================================================
  SIGIC - Sistema Inteligente de Gerenciamento da Infraestrutura da Colonia
@@ -13,14 +13,12 @@ import os
 import json
 import sys
 
-# Tenta usar UTF-8 na saida do terminal para exibir acentos corretamente.
-# (Nao afeta a logica; apenas a apresentacao no terminal.)
 try:
     sys.stdout.reconfigure(encoding="utf-8")
 except Exception:
     pass
 
-INF = float("inf")  # "infinito" usado como distancia inicial no Dijkstra
+INF = float("inf")  
 
 
 # ===========================================================================
@@ -44,9 +42,7 @@ INF = float("inf")  # "infinito" usado como distancia inicial no Dijkstra
 CAMINHO_DADOS = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                               "arquivos_auxiliares", "dados_colonia.json")
 
-# Parametros didaticos usados nas simulacoes e na modelagem matematica.
 COEF_PERDA = 0.0003   # coeficiente de perda na transmissao, por metro de cabo
-# Modelo logistico de crescimento do consumo (ver opcao 7 do menu):
 MODELO_K = 1200.0     # K  -> capacidade maxima de geracao sustentavel (kW)
 MODELO_E0 = 120.0     # E0 -> demanda inicial da colonia (kW)
 MODELO_R = 0.15       # r  -> taxa de crescimento da demanda (por mes marciano)
@@ -81,8 +77,6 @@ def construir_grafo(modulos, arestas):
     """
     grafo = {codigo: {} for codigo in modulos}
     for (u, v, peso) in arestas:
-        # Validacao defensiva: ignora conexoes invalidas para que o sistema
-        # nao quebre caso os dados tenham algum erro de digitacao.
         if u not in grafo or v not in grafo:
             ausente = u if u not in grafo else v
             print("[aviso] Conexao ignorada: o modulo '%s' nao existe na base." % ausente)
