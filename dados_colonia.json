@@ -1,0 +1,25 @@
+{
+  "_descricao": "Base de dados da infraestrutura da Colonia Aurora Siger usada pelo SIGIC (codigo_fonte.py). Esta e a unica fonte de dados do sistema.",
+  "modulos": {
+    "MOD-EN-001": {"nome": "Geradores + Painéis Solares",         "consumo": 15,  "prioridade": 5, "capacidade": 2000, "comunicacao": "Media", "status": "ativo", "pos": [1.0, 6.5]},
+    "MOD-SV-002": {"nome": "Sistemas de suporte a vida",          "consumo": 40,  "prioridade": 5, "capacidade": 60,   "comunicacao": "Alta",  "status": "ativo", "pos": [3.3, 7.6]},
+    "MOD-HB-003": {"nome": "Módulos infláveis BEAM (Habitação)",  "consumo": 120, "prioridade": 5, "capacidade": 50,   "comunicacao": "Alta",  "status": "ativo", "pos": [6.0, 7.2]},
+    "MOD-SC-004": {"nome": "Sensores científicos",                "consumo": 90,  "prioridade": 4, "capacidade": 100,  "comunicacao": "Media", "status": "ativo", "pos": [1.8, 2.3]},
+    "MOD-MN-005": {"nome": "Mineração e Produção ISRU",           "consumo": 50,  "prioridade": 4, "capacidade": 40,   "comunicacao": "Alta",  "status": "ativo", "pos": [7.6, 5.0]},
+    "MOD-LG-006": {"nome": "Logística e Suprimentos",             "consumo": 60,  "prioridade": 5, "capacidade": 80,   "comunicacao": "Alta",  "status": "ativo", "pos": [4.0, 1.2]},
+    "MOD-AG-007": {"nome": "Agricultura",                         "consumo": 50,  "prioridade": 4, "capacidade": 40,   "comunicacao": "Alta",  "status": "ativo", "pos": [4.3, 4.2]},
+    "MOD-CM-008": {"nome": "Comunicação",                         "consumo": 50,  "prioridade": 4, "capacidade": 40,   "comunicacao": "Alta",  "status": "ativo", "pos": [7.0, 1.8]}
+  },
+  "arestas": [
+    ["MOD-EN-001", "MOD-SV-002", 75],
+    ["MOD-SV-002", "MOD-HB-003", 80],
+    ["MOD-HB-003", "MOD-MN-005", 80],
+    ["MOD-SC-004", "MOD-AG-007", 95],
+    ["MOD-AG-007", "MOD-MN-005", 100],
+    ["MOD-AG-007", "MOD-SV-002", 105],
+    ["MOD-LG-006", "MOD-SC-004", 75],
+    ["MOD-LG-006", "MOD-AG-007", 90],
+    ["MOD-CM-008", "MOD-AG-007", 110],
+    ["MOD-EN-001", "MOD-AG-007", 120]
+  ]
+}
