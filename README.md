@@ -172,7 +172,7 @@ Consumo atual      →  475 kW  ≈  40% de K
 ## Estrutura de arquivos
 
 ```
-entrega/
+SIGIC-AURORA-SIGER
 ├── codigo_fonte.py                   # sistema principal — execute aqui
 ├── arquivos_auxiliares/
 │   ├── dados_colonia.json            # única fonte de dados da colônia
