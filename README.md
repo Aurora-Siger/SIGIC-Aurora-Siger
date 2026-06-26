@@ -1,161 +1,207 @@
-# SIGIC — Sistema Inteligente de Gerenciamento da Infraestrutura da Colônia
-
-Sistema de gestão e análise da rede energética da Colônia Aurora Siger — Fase 4: Energia para Sobreviver.
-
-O SIGIC simula a estrutura da infraestrutura da colônia, constrói um grafo de módulos conectados por cabos e permite estudar rotas de energia, pontos críticos da rede, modelagem matemática do consumo e cenários operacionais.
-
----
-
-## Sobre o projeto
-
-Trabalho desenvolvido para a Fase 4 da missão Aurora Siger, com foco na infraestrutura energética e na operação sustentável da colônia marciana.
-
-O sistema utiliza:
-
-- representação de rede por grafos não direcionados e ponderados
-- algoritmos de busca e otimização: BFS, DFS e Dijkstra
-- análise de conectividade: componentes, pontes e pontos de articulação
-- modelagem matemática do consumo de energia com crescimento logístico
-- simulações operacionais de distribuição de energia, falhas e priorização de cargas
-
----
-
-## Estrutura do projeto
+<div align="center">
 
 ```
-SIGIC-Aurora-Siger/
-├── README.md
-├── codigo_fonte.py          # Lógica principal do SIGIC e interface de menu
-├── dados_colonia.json       # Base de dados da infraestrutura da colônia
-└── arquivos_auxiliares/     # Recursos auxiliares usados pelo sistema
+███████╗██╗ ██████╗ ██╗ ██████╗
+██╔════╝██║██╔════╝ ██║██╔════╝
+███████╗██║██║  ███╗██║██║
+╚════██║██║██║   ██║██║██║
+███████║██║╚██████╔╝██║╚██████╗
+╚══════╝╚═╝ ╚═════╝ ╚═╝ ╚═════╝
 ```
 
----
+### Sistema Inteligente de Gerenciamento da Infraestrutura da Colônia
+**Colônia Aurora Siger · Fase 4 — Energia para Sobreviver**
 
-## Componentes da Colônia
+![Python](https://img.shields.io/badge/Python-3.x-blue?style=flat-square&logo=python&logoColor=white)
+![Biblioteca](https://img.shields.io/badge/Dependências-Nenhuma-brightgreen?style=flat-square)
+![Fase](https://img.shields.io/badge/Fase-4-orange?style=flat-square)
 
-A base de dados define os módulos da colônia e suas conexões.
-
-| Código      | Módulo                                         | Consumo (kW) | Prioridade | Status |
-|-------------|------------------------------------------------|--------------|------------|--------|
-| MOD-EN-001  | Geradores + Painéis Solares                    | 15           | 5          | ativo  |
-| MOD-SV-002  | Sistemas de suporte a vida                     | 40           | 5          | ativo  |
-| MOD-HB-003  | Módulos infláveis BEAM (Habitação)             | 120          | 5          | ativo  |
-| MOD-SC-004  | Sensores científicos                           | 90           | 4          | ativo  |
-| MOD-MN-005  | Mineração e Produção ISRU                      | 50           | 4          | ativo  |
-| MOD-LG-006  | Logística e Suprimentos                        | 60           | 5          | ativo  |
-| MOD-AG-007  | Agricultura                                    | 50           | 4          | ativo  |
-| MOD-CM-008  | Comunicação                                    | 50           | 4          | ativo  |
+</div>
 
 ---
 
-## Rede e topologia
+## O que é o SIGIC?
 
-O grafo é construído a partir das conexões de cabos entre módulos, onde cada aresta representa uma distância em metros.
+O SIGIC representa computacionalmente a infraestrutura de uma base marciana como um **grafo não direcionado e ponderado** e otimiza sua rede energética usando algoritmos de grafos, modelagem matemática e governança ESG.
 
-Exemplos de conexões:
+Desenvolvido inteiramente com a **biblioteca padrão do Python 3** — sem nenhuma dependência externa.
 
-- `MOD-EN-001` ↔ `MOD-SV-002` : 75 m
-- `MOD-SV-002` ↔ `MOD-HB-003` : 80 m
-- `MOD-HB-003` ↔ `MOD-MN-005` : 80 m
-- `MOD-AG-007` ↔ `MOD-MN-005` : 100 m
-- `MOD-LG-006` ↔ `MOD-SC-004` : 75 m
-- `MOD-EN-001` ↔ `MOD-AG-007` : 120 m
+---
+## Equipe
+
+| Integrante | RM |
+|------------|-----|
+| Isabelle Caroline de Camargo Francisco | 572096 |
+| Matheus Lyncoln Souza Dias | 570765 |
+| Mirela Aparecida Bispo Miguel | 570830 |
+| Rodrigo Abrantes Mizerani | 571808 |
 
 ---
 
-## Funcionalidades principais
-
-### 1. Visualização da rede
-
-- lista de módulos e atributos
-- conexões e pesos de arestas
-- matriz de adjacência da infraestrutura
-
-### 2. Consulta de módulo
-
-- detalhes completos de cada módulo
-- grau de conexão e vizinhança direta
-
-### 3. Caminho mínimo de energia
-
-- Dijkstra para encontrar rota de menor custo entre dois módulos
-- cálculo de distância total e trechos percorridos
-
-### 4. Exploração da rede
-
-- BFS para visitar a rede por níveis
-- DFS para explorar rotas em profundidade
-
-### 5. Conexões críticas
-
-- detecção de pontes que quebram a rede se falharem
-- identificação de pontos de articulação que isolam módulos
-
-### 6. Eficiência operacional
-
-- grau médio do grafo
-- distância média e diâmetro da rede
-- densidade da rede e robustez
-
-### 7. Modelagem matemática
-
-- crescimento do consumo energético com modelo logístico
-- cálculo do ponto de inflexão usando derivada
-- análise de expansão e alerta para saturação da geração
-
-### 8. Simulações operacionais
-
-- distribuição de energia com perdas de transmissão
-- priorização de cargas durante blackout
-- falha de conexão e impacto na conectividade da rede
-
----
-
-## Base de dados do projeto
-
-O arquivo `dados_colonia.json` é a fonte única de dados do sistema e define:
-
-- módulos com consumo, prioridade, capacidade e comunicação
-- conexões entre módulos com distância em metros
-- topologia da rede da colônia
-
----
-
-## Como executar
-
-Requisitos: Python 3.x
-
-Execute:
+## Início rápido
 
 ```bash
+# Clone ou extraia o projeto e execute:
 python codigo_fonte.py
+
+# Windows
+py codigo_fonte.py
 ```
 
-O sistema inicia um menu interativo no terminal onde é possível selecionar as análises e simulações desejadas.
+O sistema abre um menu interativo no terminal. Sem instalação, sem pip, sem nada.
 
 ---
 
-## Objetivo educacional
+## Menu do sistema
 
-O SIGIC foi desenvolvido para:
-
-- demonstrar representação de redes e grafos aplicados à infraestrutura energética
-- comparar algoritmos clássicos de busca e otimização em uma base realista
-- avaliar a resiliência de uma colônia marciana em cenários de falha
-- aplicar modelagem matemática e conceitos de sustentabilidade energética
+```
+╔══════════════════════════════════════════════════════╗
+║           SIGIC — Colônia Aurora Siger               ║
+╠══════════════════════════════════════════════════════╣
+║  1. Visualizar a rede da colônia                     ║
+║  2. Consultar um módulo                              ║
+║  3. Caminho mínimo de energia      [Dijkstra]        ║
+║  4. Explorar a rede                [BFS / DFS]       ║
+║  5. Conexões críticas              [Pontes]          ║
+║  6. Análise de eficiência operacional                ║
+║  7. Modelagem matemática e otimização                ║
+║  8. Simulações operacionais                          ║
+║  0. Sair                                             ║
+╚══════════════════════════════════════════════════════╝
+```
 
 ---
 
-## Referências
+## A rede da colônia
 
-- Colônia Aurora Siger — Fase 4: Energia para Sobreviver
-- Grafos, busca em largura, busca em profundidade e Dijkstra
-- Modelagem logística de consumo energético
-- Simulações de priorização de cargas em blackout
+![Rede da Colônia Aurora Siger](rede_colonia.png)
+
+
+
+| Métrica | Valor |
+|--------|-------|
+| Módulos (vértices) | 8 |
+| Conexões (arestas) | 10 |
+| Consumo total | 475 kW |
+| Reserva total | 2.410 kWh |
+| Autonomia global | ~5,1 h |
+| Hub da rede | MOD-AG-007 (6 conexões) |
+| Ponte crítica | MOD-CM-008 ↔ MOD-AG-007 (110 m) |
+| Ponto de articulação | MOD-AG-007 |
+| Densidade | 0,357 |
+| Caminho médio | 169,5 m |
+| Diâmetro | 290 m (HB-003 → CM-008) |
 
 ---
 
-## Contato
+## Algoritmos
 
-Projeto local desenvolvido como parte da disciplina FIAP.
+### BFS — Busca em Largura
+Explora a rede nível a nível a partir de qualquer módulo. Útil para verificar conectividade e calcular saltos mínimos.
+```
+A partir de MOD-EN-001:
+N0 { MOD-EN-001 }
+N1 { MOD-AG-007, MOD-SV-002 }
+N2 { MOD-CM-008, MOD-LG-006, MOD-MN-005, MOD-SC-004, MOD-HB-003 }
+```
+
+### DFS — Busca em Profundidade
+Mergulha em um ramo até o fim antes de retroceder. Usa pilha (append/pop).
+```
+MOD-EN-001 → MOD-AG-007 → MOD-CM-008 → MOD-LG-006 → MOD-SC-004 → MOD-MN-005 → MOD-HB-003 → MOD-SV-002
+```
+
+### Dijkstra — Caminho Mínimo
+Calcula a rota de menor distância (= menor perda energética) entre qualquer par de módulos. Complexidade O(V²).
+```
+Rota MOD-EN-001 → MOD-CM-008:  MOD-EN-001 ──120m──► MOD-AG-007 ──110m──► MOD-CM-008
+Distância total: 230 m | Perda: 6,90% | Entregue: 93,10%
+```
+
+### Detecção de Pontes e Articulações
+Remove cada aresta/vértice e verifica via BFS se a rede se fragmenta.
+```
+Ponte:              MOD-CM-008 ↔ MOD-AG-007  (110 m)
+Ponto articulação:  MOD-AG-007
+```
+
+---
+
+## Simulações
+
+**Distribuição com perdas**
+Calcula a eficiência energética em cada rota ótima.
+Coeficiente de perda: 0,0003 por metro de cabo.
+
+```
+MOD-EN-001 → MOD-SV-002 :   75 m  |  perda  2,25%  |  entregue 97,75%
+MOD-EN-001 → MOD-AG-007 :  120 m  |  perda  3,60%  |  entregue 96,40%
+MOD-EN-001 → MOD-HB-003 :  155 m  |  perda  4,65%  |  entregue 95,35%
+MOD-EN-001 → MOD-LG-006 :  210 m  |  perda  6,30%  |  entregue 93,70%
+MOD-EN-001 → MOD-SC-004 :  215 m  |  perda  6,45%  |  entregue 93,55%
+MOD-EN-001 → MOD-MN-005 :  220 m  |  perda  6,60%  |  entregue 93,40%
+MOD-EN-001 → MOD-CM-008 :  230 m  |  perda  6,90%  |  entregue 93,10%
+
+Perda média: ~5,2%
+```
+
+**Priorização em blecaute**
+Busca exaustiva entre 2⁸ = 256 combinações para manter os sistemas mais críticos ligados.
+```
+Energia disponível: 250 kW
+✔ Ligados   : MOD-EN-001 + MOD-SV-002 + MOD-HB-003 + MOD-LG-006  →  235 kW
+✘ Desligados: MOD-SC-004, MOD-MN-005, MOD-AG-007, MOD-CM-008
+Todos os módulos de prioridade 5 foram preservados.
+```
+
+**Falha de conexão**
+Simula a remoção de qualquer cabo e analisa o impacto na conectividade da rede.
+
+---
+
+## Modelagem matemática
+
+Crescimento do consumo modelado pela **função logística (sigmoide)**:
+
+```
+         K                          K  = 1.200 kW  (capacidade máxima)
+E(t) = ─────────────    onde:       E₀ =   120 kW  (consumo inicial)
+       1 + A·e^(−rt)               r  =  0,15 /mês
+                                   A  =  9,00
+```
+
+```
+Ponto de inflexão  →  t* = 14,6 meses  (E = 600 kW, taxa = 45 kW/mês)
+Consumo atual      →  475 kW  ≈  40% de K
+90% da capacidade  →  atingido em ~29,3 meses
+```
+
+---
+
+## Estrutura de arquivos
+
+```
+entrega/
+├── codigo_fonte.py                   # sistema principal — execute aqui
+├── arquivos_auxiliares/
+│   ├── dados_colonia.json            # única fonte de dados da colônia
+│   └── README.txt
+├── rede_colonia.pdf                  # diagrama visual da rede
+├── documentacao_complementar.pdf     # documentação técnica completa
+└── link_video.txt                    # link do vídeo (YouTube · Não listado)
+```
+
+> Para modificar a colônia (módulos, conexões, pesos), edite apenas o `dados_colonia.json`.
+> O sistema carrega os dados automaticamente ao iniciar.
+
+---
+
+## Conceitos aplicados
+
+`Grafos` `BFS` `DFS` `Dijkstra` `Matriz de adjacência` `Lista de adjacência`
+`Listas` `Tuplas` `Dicionários` `Matrizes` `Modelagem logística`
+`Cálculo diferencial` `Otimização combinatória` `Smart Grids` `Governança ESG`
+
+<div align="center">
+<sub>FIAP · Fase 4 — Energia para Sobreviver · Colônia Aurora Siger</sub>
+</div>
