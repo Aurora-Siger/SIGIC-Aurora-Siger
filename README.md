@@ -1,15 +1,6 @@
 <div align="center">
 
-```
-███████╗██╗ ██████╗ ██╗ ██████╗
-██╔════╝██║██╔════╝ ██║██╔════╝
-███████╗██║██║  ███╗██║██║
-╚════██║██║██║   ██║██║██║
-███████║██║╚██████╔╝██║╚██████╗
-╚══════╝╚═╝ ╚═════╝ ╚═╝ ╚═════╝
-```
-
-### Sistema Inteligente de Gerenciamento da Infraestrutura da Colônia
+# Sistema Inteligente de Gerenciamento da Infraestrutura da Colônia
 **Colônia Aurora Siger · Fase 4 — Energia para Sobreviver**
 
 ![Python](https://img.shields.io/badge/Python-3.x-blue?style=flat-square&logo=python&logoColor=white)
